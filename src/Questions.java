@@ -115,15 +115,16 @@ public class Questions {
         // look for the index of target in input
         int low = 0;
         int high = input.length - 1;
-        while (low < high) {
-            int mid = (low + high) / 2;
-            if (input[mid] == target) { // middle element is the target. Success!!!
-                return mid;
-            } else if (input[mid] > target) { // middle element is greater than the target
+        int mid = (low + high) / 2;
+        while( low <= high ){
+            if ( input[mid] < target ){ // middle element is smaller than the target
                 low = mid + 1;
-            } else { // middle element is smaller than the target
+            } else if ( input[mid] == target ){ // middle element is the target. Success!!!
+                return mid;
+            } else { // middle element is greater the target
                 high = mid - 1;
             }
+            mid = (low + high)/2;
         }
         return -1; // element is not found
     }
@@ -137,6 +138,7 @@ public class Questions {
         input = input.toLowerCase(); // ensuring string is lower case
         int[] alphabetTemplate = new int[26];
         for (int i = 0; i < input.length(); i++) {// iterate over the string
+            System.out.println((int) input.charAt(i));
             int index = input.charAt(i) - 'a'; // Math in ASCII tables.
             alphabetTemplate[index] += 1;
         }
@@ -159,6 +161,7 @@ public class Questions {
                 sum = sum + input[i];
                 if (input[i] == 193) {
                     startCounting = false;
+                    sum -= 193;
                     break;
                 }
             } else {
@@ -175,26 +178,44 @@ public class Questions {
         // checks to see if variable sub appears in theBigOne
         // highly recommended to write this one out on a notebook
         int counter = 0;
+        int subCounter = 0;
+        boolean subFound = false;
         for (int i = 0; i < theBigOne.length(); i++) {
-            if (theBigOne.charAt(i) == sub.charAt(0)) {
-                for (int j = 0; j < theBigOne.length(); j++) {
-                    if (theBigOne.charAt(j) == sub.charAt(j)) {
+            if (theBigOne.charAt(i) == sub.charAt(subCounter) && counter != sub.length()) {
+                for (int j = i; j < theBigOne.length(); j++) {
+                    if (theBigOne.charAt(j) == sub.charAt(subCounter)) { // This causes counter to increment
                         counter += 1;
+                        subCounter += 1;
                     } else { // a character didn't match so break
+                        counter = 0;
+                        subCounter = 0;
                         break;
                     }
                     if (counter == sub.length()) {
-                        return true;
+                        subFound = true;
+                        return subFound;
                     }
                 }
             }
+            else {
+                break;
+            }
         }
-        return true;
+        return subFound;
     }
+
     // Main method is used for testing purposes
     public static void main(String[] args) {
         // Example given below
         // Run reverseNumber with your own input
-        System.out.println(reverseNumber(54321)); 
+        System.out.println(reverseNumber(54321));
+        System.out.println(findSubstring("needleinhaystack","needle"));
+        System.out.println(findSubstring("LurkingEverywhere","spy"));
+        System.out.println(findSubstring("ImADuplicate","ImADuplicate"));
+        System.out.println(findSubstring("hullabaloo", "love"));
+//        System.out.println(findSubstring("LurkingEverywhere","urking"));
+//        System.out.println(findSubstring("ImADuplicate","ImADuplicate"));
+//        System.out.println(findSubstring("hullabaloo", "love"));
+//        System.out.println(binarySearch(new int[]{1,2,3,4,5,6,7,8}, 4));
     }
 }
