@@ -136,15 +136,20 @@ public class Questions {
         // Example: Input: This is homework, Return: 3 (letters i, s, and o occur more than once
 
         input = input.toLowerCase(); // ensuring string is lower case
-        int[] alphabetTemplate = new int[26];
+        int[] alphabetTemplate = new int[27];
         for (int i = 0; i < input.length(); i++) {// iterate over the string
-            System.out.println((int) input.charAt(i));
-            int index = input.charAt(i) - 'a'; // Math in ASCII tables.
+            int index;
+            if ( !Character.isAlphabetic(input.charAt(i)) ) {
+                index = 26;
+            } else {
+                index = input.charAt(i) - 'a'; // Math in ASCII tables.
+            }
+
             alphabetTemplate[index] += 1;
         }
         int counter = 0;
         for (int i = 0; i < alphabetTemplate.length; i++) {
-            if (alphabetTemplate[i] > 0) {
+            if (alphabetTemplate[i] > 1 && i != 26) {
                 counter = counter + 1;
             }
         }
@@ -210,9 +215,9 @@ public class Questions {
         // Run reverseNumber with your own input
         System.out.println(reverseNumber(54321));
         System.out.println(findSubstring("needleinhaystack","needle"));
-        System.out.println(findSubstring("LurkingEverywhere","spy"));
-        System.out.println(findSubstring("ImADuplicate","ImADuplicate"));
-        System.out.println(findSubstring("hullabaloo", "love"));
+//        System.out.println(findSubstring("LurkingEverywhere","spy"));
+//        System.out.println(findSubstring("ImADuplicate","ImADuplicate"));
+//        System.out.println(findSubstring("hullabaloo", "love"));
 //        System.out.println(findSubstring("LurkingEverywhere","urking"));
 //        System.out.println(findSubstring("ImADuplicate","ImADuplicate"));
 //        System.out.println(findSubstring("hullabaloo", "love"));
