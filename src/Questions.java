@@ -214,6 +214,5 @@ public class Questions {
         // Example given below
         // Run reverseNumber with your own input
         System.out.println(reverseNumber(54321));
-        System.out.println(findSubstring("needleinhaystack","needle"));
     }
 }
