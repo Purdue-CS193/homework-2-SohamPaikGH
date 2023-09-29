@@ -215,12 +215,5 @@ public class Questions {
         // Run reverseNumber with your own input
         System.out.println(reverseNumber(54321));
         System.out.println(findSubstring("needleinhaystack","needle"));
-//        System.out.println(findSubstring("LurkingEverywhere","spy"));
-//        System.out.println(findSubstring("ImADuplicate","ImADuplicate"));
-//        System.out.println(findSubstring("hullabaloo", "love"));
-//        System.out.println(findSubstring("LurkingEverywhere","urking"));
-//        System.out.println(findSubstring("ImADuplicate","ImADuplicate"));
-//        System.out.println(findSubstring("hullabaloo", "love"));
-//        System.out.println(binarySearch(new int[]{1,2,3,4,5,6,7,8}, 4));
     }
 }
